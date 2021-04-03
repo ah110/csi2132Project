@@ -1,0 +1,35 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <td>Room Id</td>
+    <td>Capacity</td>
+    <td>Price</td>
+    <td>Amenities</td>
+    <td>Room_view</td>
+    <td>Room Type</td>
+    <td>Extendable</td>
+    <td>Available</td>
+    <td>Hotel_id</td>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let room of rooms; trackBy: identify">
+    <td>{{ room.room_id }}</td>
+    <td>{{ room.capacity }}    </td>
+    <td>{{ room.price | currency:'$':'code' }}</td>
+    <td>{{room.amenities}}     </td>
+    <td>{{room.room_view}}</td>
+    <td>{{room.roomtype}}</td>
+    <td>{{room.extendable}}</td>
+    <td>{{room.available}}</td>
+    <td>{{room.hotel_id}}</td>
+    <td>
+      <a [routerLink]="['/booking', room]" class="btn btn-success">
+        <fa-icon [icon]="icons.faEdit"></fa-icon>
+        Book
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,69 @@
+<div class="card">
+  <div class="card-body">
+    <h2>Book Room</h2>
+    <form [formGroup]="bookingForm" novalidate (submit)="onSubmit()">
+      <div class="form-group">
+        <label class="font-weight-bold" for="b-id">Booking ID</label>
+        <input type="number" class="form-control" placeholder="Type Booking ID" formControlName="booking_id"#booking_id  />
+      </div>
+      <div *ngIf="validatorInputs('booking_id')" class="alert alert-danger">
+        <div *ngIf="validatorErrorsRequired('booking_id')">
+          The field 'Booking ID' is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="font-weight-bold" for="c-id">Customer ID</label>
+        <input class="form-control" type="number" placeholder="Type your ID" formControlName="customer_id" #customer_id />
+      </div>
+      <div *ngIf="validatorInputs('customer_id')" class="alert alert-danger">
+        <div *ngIf="validatorErrorsRequired('customer_id')">
+          The field 'Customer ID' is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="font-weight-bold" for="r-id">Room ID</label>
+        <input class="form-control" type="number" placeholder="Type room Id" formControlName="room_id" #room_id />
+      </div>
+      <div *ngIf="validatorInputs('room_id')" class="alert alert-danger">
+        <div *ngIf="validatorErrorsRequired('room_id')">
+          The field 'Room ID' is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="font-weight-bold" for="rent-from">Rent From</label>
+        <input class="form-control" type="date" placeholder="YYYY/MM/DD/" formControlName="rent_from"#rent_from  />
+      </div>
+      <div *ngIf="validatorInputs('rent_from')" class="alert alert-danger">
+        <div *ngIf="validatorErrorsRequired('rent_from')">
+          The field 'Rent From' is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="font-weight-bold" for="rent-to">Rent To</label>
+        <input class="form-control" type="date" placeholder="YYYY/MM/DD/" formControlName="rent_to"#rent_to/>
+      </div>
+      <div *ngIf="validatorInputs('rent_to')" class="alert alert-danger">
+        <div *ngIf="validatorErrorsRequired('rent_to')">
+          The field 'Rent To' is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" [disabled]="bookingForm.pristine || bookingForm.invalid">
+            <fa-icon [icon]="icons.faUserEdit"></fa-icon> book Room
+        </button>
+      </div>
+    </form>
+  </div>
+  <div>
+    <h2>check in</h2>
+    <div>
+      <label for="id">Booking Id: </label>
+      <input type="number" #booking_id id="id">
+      <button (click)="submit(booking_id.value)">Check IN</button>
+    </div>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
